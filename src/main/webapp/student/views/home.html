@@ -1,0 +1,130 @@
+<div  layout="column" style="height:1000px;" ng-cloak="" class="sidenavdemoBasicUsage" ng-app="">
+  <md-toolbar md-scroll-shrink="">
+    <h1 class="md-toolbar-tools center">Recipe Manager</h1>
+  </md-toolbar>
+  <section layout="row" flex="">
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+
+        <p hide="" show-gt-md="">
+          <ul>
+          <li>
+          <md-input-container class="md-block"> <label>Recipe List
+				</label> <md-select ng-model="recipe.recipeId"> <md-option
+				ng-repeat="recipe in recipes" value="{{recipe.recipeId}}">
+			{{recipe.recipeName}} </md-option> </md-select> </md-input-container>
+		
+		 <md-card-actions layout="row" layout-align="end center">
+		 <md-button
+			class="md-raised md-primary" type="submit" ng-click="getRecipe(recipe)">Show Recipe</md-button> 
+			</md-card-actions> 
+          </li>
+           <li>
+            <md-card-actions layout="row" layout-align="end center">
+		 <md-button ng-click="addRecipe()"
+			class="md-raised md-primary" >Add Recipe</md-button> 
+			</md-card-actions> 
+           </li>
+          </ul>
+        </p>
+      </md-content>
+
+    </md-sidenav>
+
+    <md-content flex="" layout-padding="">
+    
+    <div layout="column" layout-align="top center" ng-show="homeShow">
+    	<h1 class="md-display-2">Welcome to Recipe Manager</h1>
+    </div>
+
+      <div layout="column" layout-align="top center">
+      
+      <div ng-show="show">
+      <h1 >{{items.ingredientOne}}  : 	Ingredient List</h1>
+     <br>  <br>
+      	<h2>Ingredient 1 :   	{{items.ingredientOne}}</h2>
+      	<h2>Ingredient 2 :		{{items.ingredientTwo}}</h2>
+      	<h2>Ingredient 3 :		{{items.ingredientThree}}</h2>
+      	<h2>Ingredient 4 :		{{items.ingredientFour}}</h2>
+    
+ 
+      </div>
+      
+        <div ng-show="showRecipe">
+        
+     <md-content layout="row" layout-align="center center" style="width: 100%;">
+    <md-card flex="initial" class="tb-register-card" md-theme="tb-dark">
+        <md-card-title>
+            <md-card-title-text>
+                <span  class="md-headline">Add Recipe </span>
+            </md-card-title-text>
+        </md-card-title>
+     <md-card-content>
+    <form name="projectForm" >
+
+      <md-input-container class="md-block">
+        <label>Recipe Name</label> <input md-maxlength="30" required="" md-no-asterisk=""
+				name="recipeName" ng-model="recipeObj.recipeName">
+        <div ng-messages="projectForm.recipeName.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name must be less than 30 characters long.</div>
+          
+        </div>
+      </md-input-container>
+
+    
+ <md-input-container class="md-block">
+        <label>Ingredient 1</label> <input md-no-asterisk=""
+				name="ingredientOne"  ng-model="recipeObj.ingredientOne"  required="">
+        <div ng-messages="projectForm.ingredientOne.$error">
+          <div ng-message="required">Ingredient 1 is required.</div>
+          
+        </div>
+      </md-input-container>
+
+ <md-input-container class="md-block">
+        <label>Ingredient 2</label> <input md-no-asterisk=""
+				name="ingredientTwo"  ng-model="recipeObj.ingredientTwo" required="">
+        <div ng-messages="projectForm.ingredientTwo.$error">
+          <div ng-message="required">Ingredient 2 is required.</div>
+          
+        </div>
+      </md-input-container>
+       <md-input-container class="md-block">
+        <label>Ingredient 3</label> <input md-no-asterisk=""
+				name="ingredientThree" ng-model="recipeObj.ingredientThree" required="">
+        <div ng-messages="projectForm.ingredientThree.$error">
+          <div ng-message="required">Ingredient 3 is required.</div>
+          
+        </div>
+      </md-input-container>
+       <md-input-container class="md-block">
+        <label>Ingredient 4</label> <input md-no-asterisk=""
+				name="ingredientFour" ng-model="recipeObj.ingredientFour" required="">
+        <div ng-messages="projectForm.ingredientFour.$error">
+          <div ng-message="required">Ingredient 4 is required.</div>
+          
+        </div>
+      </md-input-container>
+      
+      <div>
+        <md-button class="md-raised md-primary" type="submit" ng-click="saveDetails(recipeObj)">Submit</md-button>
+                <md-button class="md-raised md-primary" type="submit" ng-click="clearForm()">Cancel</md-button>
+        
+      </div> 
+
+    </form>
+          </md-card-content>
+    </md-card>
+</md-content>
+        
+        </div>
+      </div>
+
+      <div flex=""></div>
+
+    </md-content>
+
+  </section>
+
+</div>
